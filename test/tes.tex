@@ -154,13 +154,13 @@ $$
 
 对于感知，我们先考虑单个目标的情况，设总的信号采样个数为$K=(N+Q)\times M$，目标的时延为$L$个采样单位，多普勒频率为$f_d$，信号经过感知信道后得到的接收信号为：
 $$
-\begin{align}
+\begin{aligned}
 y_s&=\alpha Dx\odot d+z \\
 D&=\begin{bmatrix}
     0_{L\times K} \\
     I_{(K-L)\times K}
 \end{bmatrix}
-\end{align}
+\end{aligned}
 $$
 
 \subsection*{\heiti\zihao{3} 接收端处理}
@@ -179,6 +179,9 @@ $$
 \begin{aligned}
 DFT\{x(n-L)\}&=\sum_{n=0}^{N-1}x(n-L)e^{-j2\pi \frac{nm}{N}} \\
 &=e^{-j2\pi \frac{Lm}{N}}\sum_{n=0}^{N-1}x(n-L)e^{-j2\pi \frac{(n-L)m}{N}} \\
+&=e^{-j2\pi \frac{Lm}{N}}DFT\{x(n)\}
 \end{aligned}
 $$
+
+由此可见，当一个离散信号在时域产生循环移位时，相当于在频域上每一项都多乘了一个线性相移变量。
 \end{document}
